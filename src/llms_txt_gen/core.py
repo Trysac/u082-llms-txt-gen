@@ -558,6 +558,8 @@ def _resolve_inside(root_real: Path, path: str) -> Path:
     segments = path.split("/")
     if not path or path.startswith(("/", "\\")) or _DRIVE_RE.match(path) or ".." in segments:
         raise LlmsTxtError("path_outside_root", problem)
+    if "\x00" in path:  # Path.resolve() does not reject NUL on every platform (Windows, Python 3.13)
+        raise LlmsTxtError("path_outside_root", problem)
     try:
         target = (root_real / path).resolve()
     except (OSError, RuntimeError, ValueError) as exc:
