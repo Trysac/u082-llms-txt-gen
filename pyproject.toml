@@ -19,6 +19,9 @@ classifiers = [
 ]
 dependencies = []
 
+[project.scripts]
+llms-txt-gen = "llms_txt_gen.__main__:main"
+
 [project.urls]
 Homepage = "https://github.com/Trysac/u082-llms-txt-gen"
 Source = "https://github.com/Trysac/u082-llms-txt-gen"

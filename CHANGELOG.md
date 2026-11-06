@@ -9,4 +9,5 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Add `llms-txt-gen`: generate `llms.txt` and `llms-full.txt` from a README and docs folder per the llms.txt proposal, with `--check` mode to fail CI on drift and a validator for the format.
 - Initial project structure from the factory utility template.

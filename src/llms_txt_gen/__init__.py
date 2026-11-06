@@ -1,21 +1,32 @@
-"""Generate llms.txt and llms-full.txt from a repository README and docs folder per the llms.txt proposal, with a check mode for CI drift"""
+"""Generate llms.txt and llms-full.txt from a repository's README and docs folder."""
 
 from __future__ import annotations
 
-__all__ = ["__version__", "normalize"]
+import logging
+
+from .core import (
+    Discovery,
+    DocEntry,
+    LlmsTxtError,
+    Problem,
+    build_llms_full,
+    build_llms_txt,
+    discover_docs,
+    validate_llms_txt,
+)
+
+__all__ = [
+    "Discovery",
+    "DocEntry",
+    "LlmsTxtError",
+    "Problem",
+    "__version__",
+    "build_llms_full",
+    "build_llms_txt",
+    "discover_docs",
+    "validate_llms_txt",
+]
 
 __version__ = "0.1.0"
 
-
-def normalize(value: str) -> str:
-    """Return ``value`` trimmed and lower-cased.
-
-    Placeholder API created by the template: replace it with the utility's real behavior.
-
-    Raises:
-        ValueError: if ``value`` is empty or only whitespace.
-    """
-    cleaned = value.strip()
-    if not cleaned:
-        raise ValueError("value must not be empty")
-    return cleaned.lower()
+logging.getLogger(__name__).addHandler(logging.NullHandler())
